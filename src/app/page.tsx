@@ -1,8 +1,10 @@
 
 import Header from "@/app/components/Header";
 import Allcard from "./components/Allcard";
-
-
+import A_propos from "./components/A_propos";
+import Services from "./components/services";
+import Contact from "./components/Contact";
+import Checkout from "./components/Checkout";
 
 export default function Home() {
   return (
@@ -12,6 +14,11 @@ export default function Home() {
         {/* <ProductCard/> */}
         <Allcard/>
          </main>  
+         <A_propos/> 
+          <Services/> 
+          <Contact/>
+          <Checkout/> 
+ 
 
     </div>
   );

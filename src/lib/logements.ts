@@ -1,15 +1,17 @@
-"use client";
+// src/lib/logements.ts
+export type Logement = {
+  id: number;
+  image: string;
+  titre: string;
+  description: string;
+  localisation: string;
+  surface: string;
+  prix: string;
+};
 
-import ProductCard from "./ProductCard";
-
-
-
-
-
-
-export default function Allcards() {
-  const logements = [
-    {
+export const logements: Logement[] = [
+  {
+    id: 1,
     image: "/gabonhome-.jpg",
     titre: "Maison à Akanda",
     description: "3 chambres, salon, cuisine, 3 douches dont une pour visiteurs.",
@@ -17,8 +19,8 @@ export default function Allcards() {
     surface: "120 m²",
     prix: "300 000 FCFA / mois",
   },
-
-   {
+  {
+    id: 2,
     image: "/logements-gabon.jpg",
     titre: "Villa à Owendo",
     description: "Villa moderne avec 4 chambres, piscine, jardin et parking sécurisé.",
@@ -26,32 +28,13 @@ export default function Allcards() {
     surface: "250 m²",
     prix: "600 000 FCFA / mois",
   },
-
-   {
-    image: "/i.jpg",
+  {
+    id: 3,
+    image: "/images.jpg",
     titre: "Studio à Bellevue",
     description: "Studio meublé à louer, idéal pour une personne seule ou un couple.",
     localisation: "Bellevue",
     surface: "35 m²",
     prix: "150 000 FCFA / mois",
   },
-  ];
-
-  return (
-    <div className="bg-blue-50 min-h-screen p-6">
-      <div className="flex flex-wrap gap-6 justify-start">
-        {logements.map((logement, index) => (
-          <ProductCard
-  key={index}
-  image={logement.image}
-  titre={logement.titre}
-  description={logement.description}
-  localisation={logement.localisation}
-  surface={logement.surface}
-  prix={logement.prix}
-/>
-        ))}
-      </div>
-    </div>
-  );
-}
+];
