@@ -30,7 +30,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="p-6">
+    <main className="p-6 bg-blue-100">
       <h1 className="text-2xl font-bold mb-4">Contactez-nous</h1>
       <form ref={form} onSubmit={sendEmail} className="space-y-4 max-w-lg">
         <input
