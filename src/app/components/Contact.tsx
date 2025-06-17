@@ -13,10 +13,10 @@ export default function ContactPage() {
 
     emailjs
       .sendForm(
-        "service_xxx",        // 👉 Remplace par ton Service ID
-        "template_yyy",       // 👉 Remplace par ton Template ID
+        "Ice",        // 👉 Remplace par ton Service ID
+        "template_g6i6qqp",       // 👉 Remplace par ton Template ID
         form.current,
-        "public_key_zzz"      // 👉 Remplace par ta Public Key
+        "xI7KcSX8UlP9aCxQj"      // 👉 Remplace par ta Public Key
       )
       .then(
         (result) => {
@@ -61,8 +61,7 @@ export default function ContactPage() {
           required
         />
         <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          type="submit" className="bg-blue-800 text-white px-6 py-2 rounded hover:bg-blue-600"
         >
           Envoyer
         </button>
