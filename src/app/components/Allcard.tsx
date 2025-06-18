@@ -28,7 +28,7 @@ export default function Allcards() {
   },
 
    {
-    image: "/i.jpg",
+    image: "/u.jpg",
     titre: "Studio à Bellevue",
     description: "Studio meublé à louer, idéal pour une personne seule ou un couple.",
     localisation: "Bellevue",

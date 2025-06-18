@@ -16,7 +16,7 @@ export default function Home() {
          </main>  
          <A_propos/> 
           <Services/> 
-          <div className="min-h-screen flex flex-col md:flex-row bg-gray-50" >
+          <div className="h-screen flex flex-col md:flex-row bg-gray-50" >
           <Contact/>
           <Checkout/> 
             </div>
