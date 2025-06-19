@@ -7,6 +7,8 @@ export type Logement = {
   localisation: string;
   surface: string;
   prix: string;
+  type: string;
+  etat: string; 
 };
 
 export const logements: Logement[] = [
@@ -14,27 +16,35 @@ export const logements: Logement[] = [
     id: 1,
     image: "/gabonhome-.jpg",
     titre: "Maison à Akanda",
+    type: "Appartement",
     description: "3 chambres, salon, cuisine, 3 douches dont une pour visiteurs.",
     localisation: "Akanda",
     surface: "120 m²",
     prix: "300 000 FCFA / mois",
+    etat: "disponible"
   },
+
+  
   {
     id: 2,
     image: "/logements-gabon.jpg",
     titre: "Villa à Owendo",
+     type: "villa",
     description: "Villa moderne avec 4 chambres, piscine, jardin et parking sécurisé.",
     localisation: "Owendo",
     surface: "250 m²",
     prix: "600 000 FCFA / mois",
+    etat: "pris"
   },
   {
     id: 3,
-    image: "/images.jpg",
+    image: "/i.jpg",
     titre: "Studio à Bellevue",
+     type: "studio",
     description: "Studio meublé à louer, idéal pour une personne seule ou un couple.",
     localisation: "Bellevue",
     surface: "35 m²",
     prix: "150 000 FCFA / mois",
+    etat: "en négociation"
   },
 ];

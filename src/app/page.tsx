@@ -4,7 +4,7 @@ import Allcard from "./components/Allcard";
 import A_propos from "./components/A_propos";
 import Services from "./components/services";
 import Contact from "./components/Contact";
-import Checkout from "./components/Checkout";
+
 
 export default function Home() {
   return (
@@ -16,12 +16,12 @@ export default function Home() {
          </main>  
          <A_propos/> 
           <Services/> 
-          <div className="min-h-screen flex flex-col md:flex-row bg-gray-50" >
+          
           <Contact/>
-          <Checkout/> 
+          
             </div>
  
 
-    </div>
+   
   );
 }
