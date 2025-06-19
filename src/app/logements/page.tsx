@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { logements } from "@/lib/logements";
+import Image from "next/image";
+
 
 export default function RechercheLogementPage() {
   const [type, setType] = useState("");
@@ -83,11 +85,16 @@ export default function RechercheLogementPage() {
             const numeroLogement = index + 1;
             return (
               <div key={logement.id} className="border rounded-lg shadow-md p-4 bg-white">
-                <img
-                  src={logement.image}
-                  alt={logement.titre}
-                  className="w-full h-60 object-cover rounded"
-                />
+                <div className="relative w-full h-60 rounded overflow-hidden">
+  <Image
+    src={logement.image}
+    alt={logement.titre}
+    fill
+    className="object-cover"
+    sizes="(max-width: 768px) 100vw, 400px"
+  />
+</div>
+
                 <div className="flex justify-between items-center mt-2">
                   <h2 className="text-xl font-semibold">
                     #{numeroLogement} – {logement.titre}

@@ -53,18 +53,18 @@ export async function POST(req: Request) {
       } 
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Erreur lors de l\'envoi de l\'email:', error);
     
     // Vérifier si l'erreur provient de Resend
-    if (error?.message) {
+    if (error instanceof Error) {
       console.error('Détails de l\'erreur Resend:', error.message);
     }
     
     return new Response(JSON.stringify({ 
       success: false, 
       error: 'Erreur lors de l\'envoi du message',
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      details: process.env.NODE_ENV === 'development' && error instanceof Error ? error.message : undefined
     }), { 
       status: 500,
       headers: {
