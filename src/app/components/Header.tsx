@@ -8,7 +8,7 @@ export default function Hero() {
       style={{ backgroundImage: `url('image.svg')` }} // À adapter selon ton image
     >
       {/* Overlay noir semi-transparent */}
-      <div className="absolute inset-0 bg-black opacity-60"></div>
+      <div className="absolute inset-0 bg-black opacity-30"></div>
 
       {/* Contenu centré */}
       <div className="relative text-center px-6 max-w-2xl space-y-6">
