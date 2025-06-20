@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import { logements } from "@/lib/logements";
 import Image from "next/image";
 
@@ -11,7 +10,6 @@ export default function RechercheLogementPage() {
   const [etat, setEtat] = useState("");
   const [search, setSearch] = useState("");
 
-  const router = useRouter();
 
   const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setType(e.target.value);
@@ -25,9 +23,6 @@ export default function RechercheLogementPage() {
     setSearch(e.target.value);
   };
 
-  const handleReservation = (numero: number) => {
-    router.push(`/contact?logement=${numero}`);
-  };
 
   const filteredLogements = logements.filter((logement) => {
     const matchType = type ? logement.type === type : true;
