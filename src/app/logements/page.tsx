@@ -113,12 +113,19 @@ export default function RechercheLogementPage() {
                 <p className="text-blue-700 font-bold">{logement.prix}</p>
 
                 {/* Bouton Réserver */}
-                <button
-                  onClick={() => handleReservation(numeroLogement)}
-                  className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-                >
-                  Réserver ce logement
-                </button>
+               <button
+  onClick={() => {
+    const message = `Bonjour, je souhaite réserver le logement numéro ${numeroLogement}.`;
+    const phoneNumber = "241065510946"; // Remplace avec ton numéro WhatsApp (indicatif + numéro sans le "+")
+
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  }}
+  className="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+>
+  Réserver ce logement
+</button>
+
               </div>
             );
           })}
