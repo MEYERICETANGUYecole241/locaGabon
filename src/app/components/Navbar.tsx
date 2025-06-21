@@ -4,6 +4,11 @@ import { Menu, X, Lock } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  SignInButton,
+  SignUpButton,
+} from "@clerk/nextjs";
+
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,19 +47,26 @@ export default function Header() {
 
       {/* Actions */}
       <div className="hidden md:flex items-center space-x-4">
+       
         <Link
-          href="/login"
+          href="/dashboard/bailleurs"
           className="flex items-center gap-1 text-sm text-gray-800 hover:text-blue-600"
         >
           <Lock size={16} />
-          Connexion
+      <SignInButton   />
         </Link>
+           
+              
+             
+     
         <Link
-          href="/register"
+          href="/dashboard/bailleurs"
           className="bg-gradient-to-r from-blue-700 to-blue-500 text-white px-4 py-2 rounded hover:from-blue-600 hover:to-blue-400 transition font-medium shadow-lg"
         >
-          {"S'inscrire"}
+          <SignUpButton />
+
         </Link>
+          
       </div>
 
       {/* Burger menu */}

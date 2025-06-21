@@ -3,6 +3,9 @@ import { Roboto, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import {
+  ClerkProvider,
+} from "@clerk/nextjs";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -26,6 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="fr" className={`${roboto.variable} ${geistMono.variable}`}>
       <body className="antialiased bg-blue-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
         <Navbar />
@@ -33,5 +37,10 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
+    </ClerkProvider>
   );
 }
+   
+            
+        
+  

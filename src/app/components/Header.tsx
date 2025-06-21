@@ -26,7 +26,7 @@ export default function Hero() {
           Simple. Rapide. Fiable. Avec <strong className="text-yellow-400">LocaGabon</strong>.
         </p>
 
-        <Link href="/recherche">
+        <Link href="/logements">
            <button
             className="shadow-lg bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-yellow-300 text-white px-6 py-3 rounded-full font-semibold transition duration-300 animate-fade-in"
           >
