@@ -61,8 +61,10 @@ export default function ContactPage() {
         setError("Une erreur s’est produite lors de l’envoi du message.");
       }
     } catch (err) {
-      setError("Impossible de contacter le serveur. Veuillez réessayer plus tard.");
-    } finally {
+  console.error("Erreur lors de l'envoi du message :", err);
+  setError("Impossible de contacter le serveur. Veuillez réessayer plus tard.");
+}
+ finally {
       setLoading(false);
     }
   };
