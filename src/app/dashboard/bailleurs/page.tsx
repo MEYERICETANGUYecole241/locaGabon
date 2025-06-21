@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function FormulaireBailleur() {
   const [form, setForm] = useState({
@@ -70,8 +71,11 @@ export default function FormulaireBailleur() {
         setStatus("Erreur : " + data.error);
       }
     } catch (error) {
-      setStatus("Erreur lors de la requête.");
+      console.error("Erreur lors de l'envoi de l'email :", error);
+      setStatus("Erreur inattendue lors de l'envoi de l'email.");
     }
+    // Ajout d'un bloc catch pour gérer les erreurs inattendues
+   
   };
 
   return (
@@ -155,7 +159,7 @@ export default function FormulaireBailleur() {
       </label>
 
       <label className="block mb-4">
-        Image de l'habitation :
+        Image de l&apos;habitation :
         <input
           type="file"
           accept="image/*"
@@ -165,11 +169,15 @@ export default function FormulaireBailleur() {
       </label>
 
       {imageBase64 && (
-        <img
-          src={imageBase64}
-          alt="Aperçu de l'image"
-          className="mb-4 w-full h-48 object-cover rounded"
-        />
+        <div className="relative w-full h-48 mb-4">
+  <Image
+    src={imageBase64}
+    alt="Aperçu"
+    layout="fill"
+    objectFit="cover"
+    className="rounded"
+  />
+</div>
       )}
 
       <button
