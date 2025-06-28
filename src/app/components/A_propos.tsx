@@ -91,7 +91,7 @@ export default function A_propos() {
   return (
     <main className="overflow-hidden">
       {/* Hero Section avec animations gabonaises */}
-<section className="relative px-4 py-16 bg-gradient-to-br from-sky-300 via-blue-400 via-green-500 to-blue-500 text-center text-white">
+<section className="relative px-4 py-16 bg-gradient-to-br from-blue-300 via-blue-400 via-blue-900 to-blue-500 text-center text-white">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className='absolute inset-0 bg-[url("data:image/svg+xml,%3Csvg width=&#34;60&#34; height=&#34;60&#34; viewBox=&#34;0 0 60 60&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;%3E%3Cg fill=&#34;none&#34; fill-rule=&#34;evenodd&#34;%3E%3Cg fill=&#34;%23ffffff&#34; fill-opacity=&#34;0.1&#34;%3E%3Ccircle cx=&#34;30&#34; cy=&#34;30&#34; r=&#34;2&#34;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")] bg-repeat'></div>

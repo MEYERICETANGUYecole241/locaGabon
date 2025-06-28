@@ -112,6 +112,7 @@ export default function ContactPage() {
         const result = await res.json();
         console.log("Message envoyé avec succès :", result);
         setSent(true);
+
         formRef.current?.reset();
         setForm({ name: "", email: "", subject: "", message: "" });
       } else {
@@ -199,7 +200,7 @@ export default function ContactPage() {
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent mb-2">
             Contactez-nous
           </h1>
           <p className="text-gray-600 text-lg">
@@ -272,7 +273,7 @@ export default function ContactPage() {
               className={`w-full py-4 px-6 rounded-lg font-medium text-white transition-all duration-200 flex items-center justify-center gap-2 ${
                 loading 
                   ? "bg-gray-400 cursor-not-allowed transform scale-95" 
-                  : "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 hover:shadow-lg hover:scale-105 active:scale-95"
+                  : "bg-gradient-to-r from-blue-600 to-blue-900 hover:from-blue-700 hover:to-purple-700 hover:shadow-lg hover:scale-105 active:scale-95"
               }`}
             >
               {loading ? (

@@ -2,8 +2,8 @@ import React from 'react';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
-  return (
-    <footer className="bg-gradient-to-br from-blue-900 via-green-900 to-blue-900 text-white mt-16 border-t border-yellow-400/20 relative overflow-hidden">
+  return (  
+    <footer className="bg-gradient-to-br from-blue-900 via-blue-600 to-blue-900 text-white mt-16 border-t border-yellow-400/20 relative overflow-hidden">
       {/* Motifs gabonais en arrière-plan */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-20 w-20 h-20 border-2 border-yellow-400 rotate-45"></div>

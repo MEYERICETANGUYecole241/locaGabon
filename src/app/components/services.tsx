@@ -111,12 +111,16 @@ export default function Services() {
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2
-              id="services-heading"
-              className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight"
-            >
-              Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Services</span>
-            </h2>
+          <h2
+  id="services-heading"
+  className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight"
+>
+  <span className="animate-color-change">Nos</span>{' '}
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-300">
+    Services
+  </span>
+</h2>
+
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Des solutions complètes pour tous vos besoins immobiliers au Gabon
             </p>
@@ -245,18 +249,7 @@ export default function Services() {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className={`text-center mt-16 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-         <div className="bg-gradient-to-r from-blue-500 to-indigo-700 rounded-3xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">Prêt à commencer ?</h3>
-            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Rejoignez des centaines de clients satisfaits et trouvez votre logement idéal dès aujourd&#39;hui.
-            </p>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 hover:scale-105 transform">
-              Commencer maintenant
-            </button>
-          </div>
-        </div>
+       
       </div>
     </section>
   );
