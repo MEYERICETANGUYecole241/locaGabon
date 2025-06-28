@@ -38,7 +38,7 @@ export default function Hero() {
         {/* Citation gabonaise */}
         <div className="mt-4 border-l-4 border-yellow-400 pl-4">
           <p className="text-white/80 text-sm italic">
-            "Akiba na bobendi" - L'hospitalité est notre tradition
+            &rdquo;Akiba&rdquo; - L&apos;hospitalité est notre tradition
           </p>
         </div>
 

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Home, MapPin, Square, DollarSign, FileText, Camera, Send, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 export default function FormulaireBailleur() {
   const [form, setForm] = useState({
@@ -181,11 +182,14 @@ export default function FormulaireBailleur() {
             {/* Aperçu de l'image */}
             {imageBase64 && (
               <div className="relative rounded-xl overflow-hidden shadow-lg animate-fade-in">
-                <img
-                  src={imageBase64}
-                  alt="Aperçu"
-                  className="w-full h-64 object-cover"
-                />
+               <Image
+  src={imageBase64}
+  alt="Aperçu"
+  width={600} // largeur souhaitée (à ajuster selon le design)
+  height={256} // hauteur souhaitée
+  className="w-full h-64 object-cover rounded-xl"
+  unoptimized // nécessaire car imageBase64 est une Data URL (non hébergée)
+/>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 <div className="absolute bottom-3 left-3 text-white font-medium">
                   Aperçu de votre photo

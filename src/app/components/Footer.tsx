@@ -26,7 +26,7 @@ export default function Footer() {
             <h2 className="text-2xl font-bold">LocaGabon</h2>
           </div>
           <p className="text-sm mt-1 text-blue-200">trouvez simplement, vivez sereinement</p>
-          <p className="text-xs mt-2 text-green-300 italic">"Akiba na bobendi" - L'hospitalité gabonaise</p>
+          <p className="text-xs mt-2 text-green-300 italic">&ldquo;Akiba &ldquo;- L&#39;hospitalité gabonaise</p>
         </div>
 
         {/* Liens de navigation rapide */}
