@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocaGabon - Présentation Technique</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #059669 50%, #1e3a8a 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            background-attachment: fixed;
+        }
+        
+        .slide:nth-child(even) {
+            background: linear-gradient(135deg, #059669 0%, #0284c7 50%, #1e3a8a 100%);
+        }
+        
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #3b82f6, #059669);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .logo::after {
+            content: '🏠';
+            font-size: 3rem;
+            position: absolute;
+        }
+        
+        .logo-small {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+        }
+        
+        .gabonais-pattern {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            opacity: 0.3;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #fbbf24;
+        }
+        
+        h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #34d399;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: #e5e7eb;
+            font-weight: 300;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .uml-container {
+            background: rgba(255, 255, 255, 0.95);
+            color: #1f2937;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .uml-box {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 0.5rem;
+            display: inline-block;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .arrow {
+            font-size: 2rem;
+            color: #fbbf24;
+            margin: 0 1rem;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            margin: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fbbf24;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #d1d5db;
+        }
+        
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .justification {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid #34d399;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 10px 10px 0;
+            text-align: left;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .gabonais-quote {
+            font-style: italic;
+            color: #34d399;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            border-left: 3px solid #fbbf24;
+            padding-left: 1rem;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 5px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot.active {
+            background: #fbbf24;
+            transform: scale(1.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="navigation">
+        <div class="nav-dot active" onclick="scrollToSlide(0)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(1)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(2)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(3)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(4)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(5)"></div>
+    </div>
+
+    <!-- Slide 1: Titre et Introduction -->
+    <div class="slide">
+        <div class="gabonais-pattern">🌍</div>
+        <div class="container">
+            <div class="logo"></div>
+            <h1>LocaGabon</h1>
+            <p class="subtitle">Plateforme de Location Immobilière au Gabon</p>
+            <div class="gabonais-quote">
+                "Akiba na bobendi" - L'hospitalité est notre tradition
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Logements</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">Villes</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">4.8/5</span>
+                    <span class="stat-label">Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Contexte et Objectifs -->
+    <div class="slide">
+        <div class="container">
+            <div class="logo logo-small"></div>
+            <h2>Contexte & Objectifs</h2>
+            
+            <div class="features-grid">
+                <div class="card">
+                    <h3>🎯 Contexte</h3>
+                    <p>Le marché immobilier gabonais manque d'une plateforme moderne et centralisée. Les recherches se font encore principalement par bouche-à-oreille ou annonces papier.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>🚀 Objectif Principal</h3>
+                    <p>Digitaliser et moderniser la recherche de logements au Gabon en créant une plateforme intuitive connectant propriétaires et locataires.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>👥 Cibles</h3>
+                    <ul style="text-align: left; margin-top: 1rem;">
+                        <li>🏠 <strong>Propriétaires:</strong> Particuliers et agences immobilières</li>
+                        <li>🔍 <strong>Locataires:</strong> Jeunes professionnels, familles, étudiants</li>
+                        <li>🌍 <strong>Expatriés:</strong> Travailleurs internationaux au Gabon</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Architecture UML -->
+    <div class="slide">
+        <div class="container">
+            <div class="logo logo-small"></div>
+            <h2>Architecture & Fonctionnalités</h2>
+            
+            <div class="uml-container">
+                <h3 style="color: #1f2937; margin-bottom: 2rem;">Diagramme des Composants Principaux</h3>
+                
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
+                    <div class="uml-box">
+                        <strong>🧭 Navbar</strong><br>
+                        • Navigation<br>
+                        • Authentification<br>
+                        • Menu mobile
+                    </div>
+                    <span class="arrow">→</span>
+                    
+                    <div class="uml-box">
+                        <strong>🏠 Header</strong><br>
+                        • Hero section<br>
+                        • CTA principal<br>
+                        • Visuel d'impact
+                    </div>
+                    <span class="arrow">→</span>
+                    
+                    <div class="uml-box">
+                        <strong>🏘️ AllCards</strong><br>
+                        • Liste logements<br>
+                        • Filtres avancés<br>
+                        • Recherche
+                    </div>
+                </div>
+                
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin-top: 2rem;">
+                    <div class="uml-box">
+                        <strong>🏡 ProductCard</strong><br>
+                        • Aperçu logement<br>
+                        • Images<br>
+                        • Prix & détails
+                    </div>
+                    <span class="arrow">→</span>
+                    
+                    <div class="uml-box">
+                        <strong>📧 Contact</strong><br>
+                        • Formulaire<br>
+                        • Envoi email<br>
+                        • Support client
+                    </div>
+                    <span class="arrow">→</span>
+                    
+                    <div class="uml-box">
+                        <strong>👤 Auth (Clerk)</strong><br>
+                        • Inscription<br>
+                        • Connexion<br>
+                        • Profils
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Fonctionnalités Clés -->
+    <div class="slide">
+        <div class="container">
+            <div class="logo logo-small"></div>
+            <h2>Fonctionnalités Clés</h2>
+            
+            <div class="features-grid">
+                <div class="card">
+                    <div class="tech-icon">🔍</div>
+                    <h3>Recherche Avancée</h3>
+                    <p>Filtres par prix, localisation, type de logement, surface. Recherche textuelle intelligente avec suggestions.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="tech-icon">🎨</div>
+                    <h3>Interface Moderne</h3>
+                    <p>Design responsive adapté aux mobiles, tablettes et desktops. UX optimisée pour le contexte gabonais.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="tech-icon">🔐</div>
+                    <h3>Authentification Sécurisée</h3>
+                    <p>Système de comptes utilisateurs avec Clerk. Gestion des rôles (propriétaires/locataires).</p>
+                </div>
+                
+                <div class="card">
+                    <div class="tech-icon">📧</div>
+                    <h3>Communication Intégrée</h3>
+                    <p>Système de contact direct via Resend. Notifications et alertes pour nouveaux logements.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="tech-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Interface adaptée à tous les écrans. Navigation optimisée pour les utilisateurs gabonais.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="tech-icon">⚡</div>
+                    <h3>Performance Optimisée</h3>
+                    <p>Chargement rapide des images, mise en cache intelligente, optimisation SEO.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Technologies Utilisées -->
+    <div class="slide">
+        <div class="container">
+            <div class="logo logo-small"></div>
+            <h2>Stack Technologique</h2>
+            
+            <div class="tech-grid">
+                <div class="card">
+                    <div class="tech-icon">⚛️</div>
+                    <h3>Next.js 15.3.3</h3>
+                    <div class="justification">
+                        <strong>Pourquoi Next.js ?</strong><br>
+                        • Framework React full-stack<br>
+                        • Rendu côté serveur (SSR)<br>
+                        • Optimisation automatique des performances<br>
+                        • Support TypeScript natif<br>
+                        • Routage intégré et API routes
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tech-icon">📘</div>
+                    <h3>TypeScript</h3>
+                    <div class="justification">
+                        <strong>Pourquoi TypeScript ?</strong><br>
+                        • Typage statique pour moins d'erreurs<br>
+                        • Meilleure maintenabilité du code<br>
+                        • IntelliSense amélioré<br>
+                        • Refactoring sécurisé<br>
+                        • Documentation vivante du code
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tech-icon">🎨</div>
+                    <h3>Tailwind CSS v4</h3>
+                    <div class="justification">
+                        <strong>Pourquoi Tailwind ?</strong><br>
+                        • Développement rapide avec classes utilitaires<br>
+                        • Design system cohérent<br>
+                        • Customisation facile des couleurs<br>
+                        • Bundle CSS optimisé<br>
+                        • Responsive design intégré
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tech-icon">📦</div>
+                    <h3>pnpm</h3>
+                    <div class="justification">
+                        <strong>Pourquoi pnpm ?</strong><br>
+                        • Gestionnaire de paquets plus rapide<br>
+                        • Économie d'espace disque<br>
+                        • Installation plus efficace<br>
+                        • Meilleure gestion des dépendances<br>
+                        • Compatible avec npm/yarn
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Services et Build -->
+    <div class="slide">
+        <div class="container">
+            <div class="logo logo-small"></div>
+            <h2>Services & Déploiement</h2>
+            
+            <div class="tech-grid">
+                <div class="card">
+                    <div class="tech-icon">🔐</div>
+                    <h3>Clerk</h3>
+                    <div class="justification">
+                        <strong>Pourquoi Clerk ?</strong><br>
+                        • Authentification prête à l'emploi<br>
+                        • Interface utilisateur moderne<br>
+                        • Sécurité renforcée (2FA, SSO)<br>
+                        • Gestion des rôles et permissions<br>
+                        • Intégration simple avec Next.js<br>
+                        • Support des connexions sociales
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tech-icon">📧</div>
+                    <h3>Resend</h3>
+                    <div class="justification">
+                        <strong>Pourquoi Resend ?</strong><br>
+                        • API moderne pour l'envoi d'emails<br>
+                        • Templates HTML avancés<br>
+                        • Délivrabilité optimisée<br>
+                        • Analytics et tracking<br>
+                        • Conformité RGPD<br>
+                        • Intégration Next.js simple
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tech-icon">🌐</div>
+                    <h3>Git & GitHub</h3>
+                    <div class="justification">
+                        <strong>Pourquoi Git/GitHub ?</strong><br>
+                        • Contrôle de version distribué<br>
+                        • Collaboration en équipe<br>
+                        • Historique complet des modifications<br>
+                        • Branches pour fonctionnalités<br>
+                        • CI/CD avec GitHub Actions<br>
+                        • Code review et pull requests
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tech-icon">▲</div>
+                    <h3>Vercel & Build</h3>
+                    <div class="justification">
+                        <strong>Pourquoi Vercel et le build ?</strong><br>
+                        • Déploiement automatique depuis Git<br>
+                        • CDN global pour performance<br>
+                        • Serverless functions intégrées<br>
+                        • Optimisation automatique<br>
+                        • Preview deployments<br>
+                        • Analytics et monitoring
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" style="margin-top: 2rem;">
+                <h3>🏗️ Processus de Build</h3>
+                <p>Le build compile TypeScript → JavaScript, optimise les assets, génère les pages statiques, et crée un bundle optimisé pour la production avec tree-shaking et compression automatique.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function scrollToSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.nav-dot');
+            
+            // Remove active class from all dots
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Add active class to current dot
+            dots[index].classList.add('active');
+            
+            // Scroll to slide
+            slides[index].scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Update navigation on scroll
+        window.addEventListener('scroll', () => {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.nav-dot');
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+            
+            slides.forEach((slide, index) => {
+                const slideTop = slide.offsetTop;
+                const slideBottom = slideTop + slide.offsetHeight;
+                
+                if (scrollPosition >= slideTop && scrollPosition <= slideBottom) {
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[index].classList.add('active');
+                }
+            });
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const currentDot = document.querySelector('.nav-dot.active');
+            const currentIndex = Array.from(document.querySelectorAll('.nav-dot')).indexOf(currentDot);
+            
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                const nextIndex = Math.min(currentIndex + 1, 5);
+                scrollToSlide(nextIndex);
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                const prevIndex = Math.max(currentIndex - 1, 0);
+                scrollToSlide(prevIndex);
+            }
+        });
+    </script>
+</body>
+</html>
