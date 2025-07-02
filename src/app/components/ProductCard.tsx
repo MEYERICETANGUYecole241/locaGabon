@@ -70,13 +70,13 @@ export default function ProductCard({
             )}
             
             {/* Prix Badge avec motif gabonais */}
-            <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-600 to-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg border-2 border-yellow-400/30">
+            <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-600 to-blue-900 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg border-2 border-yellow-400/30">
               {prix}
               <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-yellow-400 rounded-full"></div>
             </div>
             
             {/* Location Badge avec style gabonais */}
-            <div className="absolute bottom-4 left-4 bg-gradient-to-r from-green-700/90 to-blue-700/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-xs flex items-center border border-yellow-400/30">
+            <div className="absolute bottom-4 left-4 bg-gradient-to-r from-blue-600/90 to-blue-900/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-xs flex items-center border border-yellow-400/30">
               <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
@@ -105,7 +105,7 @@ export default function ProductCard({
             {/* Action Button avec style gabonais */}
             <button
               onClick={() => setShowDetails(true)}
-              className="w-full bg-gradient-to-r from-blue-600 via-green-600 to-blue-700 hover:from-blue-700 hover:via-green-700 hover:to-blue-800 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg border border-yellow-400/20 relative overflow-hidden group"
+              className="w-full bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 hover:from-blue-700 hover:via-green-700 hover:to-blue-800 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg border border-yellow-400/20 relative overflow-hidden group"
             >
               <span className="relative z-10 flex items-center justify-center">
                 Voir les détails
@@ -114,7 +114,7 @@ export default function ProductCard({
                 </svg>
               </span>
               {/* Effet de vague */}
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </div>
         </>
